@@ -38,3 +38,27 @@ Users and processes should only receive the Privilege that are vital for their w
 
 ### Passwd and shadow
 
+> /etc/passwd
+> /etc/shadow
+
+### Password settings
+
+> adduser sysadmin
+> chage sysadmin
+
+> /etc/login.defs
+
+> chage -d 0 sysadmin # force sysadmin to change password at next login
+
+
+### Password Policy
+
+> Pluggable authentication modules (PAM)
+
+/etc/pam.d/common-password
+
+> password        [success=1 default=ignore]      pam_unix.so obscure yescrypt minlen=12
+
+> apt install libpam-pwquality
+
+> password pam_pwquality.so retry=3 ucredit=1 dcredit=1 ocredit=-2 minclass=3 
