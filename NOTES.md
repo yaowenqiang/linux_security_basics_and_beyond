@@ -62,3 +62,22 @@ Users and processes should only receive the Privilege that are vital for their w
 > apt install libpam-pwquality
 
 > password pam_pwquality.so retry=3 ucredit=1 dcredit=1 ocredit=-2 minclass=3 
+
+### Linux authentication
+
+
+> usb key authentication
+
+> set shortcut key to logut
+
+> gnome-session-quit --logout --no-prompt
+> alias out="gnome-session-quit --logout --no-prompt"
+
+> Ctrl + Alt + F1
+> Ctrl + Alt + F2
+> Ctrl + Alt + F4
+
+
+
+
+
