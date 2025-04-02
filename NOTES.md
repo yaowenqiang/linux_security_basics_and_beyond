@@ -77,6 +77,17 @@ Users and processes should only receive the Privilege that are vital for their w
 > Ctrl + Alt + F2
 > Ctrl + Alt + F4
 
+### Enterprise login
+
+> FreeIPA
+
+> dnf install freeipa-client
+> nmcli c m 'connection mame' ipv4.dns dnsip
+> nmcli c u 'connection mame'
+> nmcli
+> hostnamectl
+
+> ipa-client-install --enable-dns-updates --makehomedir
 
 
 
