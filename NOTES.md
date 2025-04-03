@@ -112,8 +112,39 @@ Users and processes should only receive the Privilege that are vital for their w
 
 ## su, sudo,and sudoers
 
+### su
+
+> su is short for 'substitute user'
+
+> su <username> Switches to that user account but does not change the path or environment.(it doens't open an actural new login shell associate with that user.) 
+> su - <username> Switches to that user account withing the new  user's home directory.Has full access to the user's environment
+
+The username can be ommitted when switching to root
+
+### sudo
+
++ a program
++ a group(sudo/ wheel)
++ a command
 
 
+sudo <command> Runs a command with sudo privileges(if the user is part of sudoers)(superuser do!)
+sudo -i Gives access to root account (if the user has full sudo privileges), Similar to su -,Also, accesses the root account in Ubuntu and Fedora (where the root accout has not password by default)
+
+> apt install sudo
+
+
+### sudoers
+
+> /etc/sudoers
+
+> visudo
+> Defaults user timestamp_timeout=30 
+
+### Assigning a Regular User sudo Permissions
+
+> usermod -aG wheel sysadmin
+> usermod -aG sudo sysadmin
 
 
 
