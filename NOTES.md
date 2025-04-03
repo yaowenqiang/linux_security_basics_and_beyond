@@ -89,6 +89,31 @@ Users and processes should only receive the Privilege that are vital for their w
 
 > ipa-client-install --enable-dns-updates --makehomedir
 
+### Locking the System
+
+### SSH basics
+
+> ss -ant
+> ss -tun
+
+> watch  ss -tp
+
+
+### SSH and linux in the Cloud
+
+> set ssh key  permission to 400
+> chmod 400 filename
+
+> systemctl status
+
+> terraform status
+
+> cat /etc/debian-version
+
+## su, sudo,and sudoers
+
+
+
 
 
 
