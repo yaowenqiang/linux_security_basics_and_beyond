@@ -457,6 +457,158 @@ reboot
 
 
 
+## Firewall and SSH Security
+
+### What is a Firewall
+
++ Firewalls permit or deny traffic
++ Can be hardware or software
++ Protect
+
+### Types of Linux-based Firewalls
+
++ UFW
+  + Uncomplicated Firewall
+  + Developed by Canonical
+  + Easy to use
+  + Limited security
++ firewalld
+  + Fairly comprehensive firewall
+  + Developed by Red Hat
+  + Designed for workstation and servers
+  + Front-end for nftables
++ nftables
+  + Today's sophisticated backend firewall
+  + Works directly with the linux kernel
+  + Utilizes the nft front-end tool
+  + Designed for networks and servers
++ IPFire
++ the Endian Firewall Community
++ EFW
++ GUFW
++ OpenWrt for routers
++ ClearOS
++ freebsd pfSense and OPNsense
+
+
+### Zero-trust mindset
+
+Trust Nothing
+Authenticate Everything
+
+> netcat -v ip port
+
+
+
+
+### UFW
+
+> apt install ufw
+
+| Command | Description |
+| -------------- | --------------- |
+| ufw status | show weather UFW is active or inactive |
+| ufw enable | starts and enables the firewall |
+| ufw show added | lists UFW rules |
+| ufw reset | disable UFW and deletes rules |
+
+#### Default global rules:
+
+> ufw default deny incoming
+> ufw default allow outgoing
+
+#### Setting up UFW
+
+> apt install ufw
+> systemctl enable --now ufw
+> ufw enable
+> apt install nmap
+> nmap ip
+> nmap ip -Pn
+
+> vim /etc/default/ufw
+> IPV4=no
+> vim /etc/ufw/user.rules
+
+> ufw allow ssh
+> ufw allow 22/tcp
+> ufw show added
+> ufw deny ssh
+
+> ufw status numbered
+> ufw delete 1
+> ufw allow proto tcp to 0.0.0.0/24 port 22
+
+> ufw reload
+> ufw reset
+
+### firewalld
+
+
+| Command | Description |
+| -------------- | --------------- |
+| systemctl status firewalld | Check the status of the services |
+| firewall-cmd --list-ports | Displays open networking ports(if any) |
+| firewall-cmd --add-port=80/tcp | Open port 80 on the system |
+| firewall-cmd --get-active-zones | Show the type of zone in use by each network interface |
+
+
+> yum install firewalld
+
+> firewall-cmd --get-active-zones
+> firewall-cmd --list-all
+> firewall-cmd --get-zones
+> firewall-cmd --list-all-zones
+
+
+> firewall-cmd --zone=block --change-interface=eth0 --permanet
+> firewall-cmd --zone=block --list-all
+> firewall-cmd --zone=block --add-port=22/tcp --perm
+> firewall-cmd --zone=block --remove-port=22/tcp --perm
+> firewall-cmd --get-default-zone
+
+> firewall-cmd --reload
+
+> firewall-cmd --set-default-zone block
+
+#### open multiple ports
+
+> firewall-cmd --zone=block --add-port={22,443,389, 466,88, 464}/tcp --perm
+
+
+### lock it down
+
+> firewall-cmd --panic-on # isolate on layer three
+> firewall-cmd --panic-off
+
+
+> man firewalld
+> man firewall-cmd
+
+
+### nftables
+
+> NetFilter tables
+
+### Securing SSH
+
+#### ip_tables
+
+include four kernel modules
+
++ ip_tables
++ ip6_tables
++ arp_tables
++ ebtales
+
+
+nftables 
+
+
+> first release was in 2014
+
+> apt install nftables
+
 
 
 
