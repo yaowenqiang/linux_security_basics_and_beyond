@@ -419,6 +419,35 @@ add pre-up to interface file
 > rm /etc/apparmor.d/usr.local.bin.human
 
 
+#### AppArmor and Apache Example
+
+> apt install apache2
+> apt install libapache2-mod-apparmor
+> aa-enforce usr.sbin.apache2
+
+> lateral attacks
+
+### SeLinux Basics
+
+> sestatus
+
+> getenforce
+
+
+```bash
+sudo vi /etc/selinux/config
+SELINUX=enforcing   # 强制模式（推荐生产环境）
+reboot
+
+```
+
+> semanage port -a -t ssh_port_t -p tcp 2222 
+
+
+> firewall-cli --list ports
+> firewall-cli --list services
+> firewall-cli --add-port=2222/tcp  --permanet
+> firewall-cli --reload
 
 
 
