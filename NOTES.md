@@ -609,6 +609,59 @@ nftables
 
 > apt install nftables
 
+> nft list ruleset
+
+> nft -i
+> nft> add table inet ports_table
+> nft> list ruleset
+> nft> add chain inet ports_table input {type filter hook input priority 00; policy drop; }
+> nft> add rule inet ports_table input tcp dport 22 accept
+> nft> add rule inet ports_table input icmp type { echo-request } accept
+> nft> add rule inet ports_table input icmp type { echo-reply } accept
+> nft> add rule inet ports_table input tcp sport 53 accept # dns request
+> nft> add rule inet ports_table input udp sport 53 accept # dns request
+
+> nft -a list table inet ports_table
+> nft delete rule inet ports_table input handle 5
+> nft delete chain inet ports_table  handle 1 # delete chain
+> nft flush table <table_name>
+> nft flush ruleset # remove everything
+
+### Save and Restoring the nftables Configuration
+
+> nft flush ruleset # remove everything
+
+>  /etc/nftables.conf on debian or ubuntu
+>  /etc/sysconfig/nftables.conf on centos
+> /etc/nftables/main.nft  templates
+
+### Translate iptables to nftables
+
+> apt install iptables
+
+> iptables-translate --version
+> iptables-save
+
+> iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+> iptables-translate -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+
+
+> sudo nft add table inet filter 
+> sudo nft add chain inet filter input { type filter hook input priority 0 ; }
+> nft add rule inet filter input tcp dport 22 ct state new counter accept
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
