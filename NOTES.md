@@ -831,6 +831,36 @@ Key Points:
 > hotswappable drive
 
 
+## Backup
+
+
+### Backup Devices
+
++ Dedicated backup drive
++ Backup devices(LTO, Linear tape open, etc...)
++ NAS, Synology
+
+### Backup Tools
++ rsync
++ dd
++ Third-party tools, Duplicati, deja-dup, borg, restic, zfs send, zfs receive, syncthing, etc
+
+
+good third part-tools features Considerations
+
++ archiving
++ deduplication
++ good compression ratios
++ good spped
++ cloud-based options
++ synchronization options
+
+
+#### rsync
+
+> apt install rsync
+> nomachine installer
+> rsync -avrP(progress) {Documents, Downloads} user@host:/home/user
 
 
 
