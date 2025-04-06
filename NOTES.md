@@ -766,9 +766,69 @@ export TMOUT
 
 > https://www.ssh.com/academy/iam/ssh-key-management
 
+## Linux File Security and Security Tools
+
+### Storage Drive Fault Tolerance and Backup
+
+
+#### RAID 1  - mirroring
+
+2 disks at least
+
+key points:
+
++ Use two drives that are mirrored
++ Data is written to both drives
++ Write speed can be slower than a single drive or RAID striping
++ read speed is the same as a single drive
+
+
+#### RAID 5  - striping with parody
+
+Key Points:
+
++ Uses three or more drives
++ Data is 'striped' to all drives
++ Special parity information is also striped to all drives
++ Write and read speeds can be faster than a single drive or with RAID mirroring
 
 
 
+
+
+
+3 disks at least
+
+#### RAID 6
+
+4 disks at least
+
+
+#### RAID 10 (1 and 0, not 10) and ZFS - mirroring and striping toghter
+
+
+odd mirror
+even mirror
+
+
+zfs  - software-based rad
+
+Key Points:
+
++ Combination of RAID 0 and RAID 1
++ Uses four or more drives
++ Creates two mirrors which are then stripped
++ No parity, but it is fault tolerant due to mirroring of data
++ Potentially very fast
+
+> proxmox virtual machine
+
+> duf
+
+
+> SAS drives
+
+> hotswappable drive
 
 
 
