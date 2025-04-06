@@ -650,9 +650,121 @@ nftables
 > sudo nft add chain inet filter input { type filter hook input priority 0 ; }
 > nft add rule inet filter input tcp dport 22 ct state new counter accept
 
+## Securing SSH
 
 
+### Create a strong RSA key pair
 
+> ssh-keygen -b 4096
+> ssh-keygen -b 8192
+> ssh-keygen -t ed25519
+> ssh-copy-id -i "id_ed25519.pub" user@ip
+> ssh -i "id_ed25519" user@ip
+
+> man RSA
+> man ed25519
+
+> vim /root/.ssh/config
+
+```
+Host myhost
+    HostName myhostname
+    IdentityFile ~/.ssh/id_ed25519
+    User user
+```
+
+
+### The sshd_config file
+
+
+> /etc/ssh/
+> /etc/ssh/sshd_config
+
+> backup before any changes
+
+#### Modifying the default SSH port
+
+> port 2222
+
+#### Disable Password-based SSH
+
+> PasswordAuthentication no
+
+### Disable root login via SSH
+
+> PermitRootLogin prohibit-password  # can't login as root via password,but can login via key
+
+> PermitRootLogin no
+
+#### Exclusive SSH Groups
+
+> addgroup ssh-allowed
+> adduser user -g ssh-allowed
+> usermod -g ssh-allowed user
+> groups user
+
+> AllowGroups ssh-allowed
+
+> deluser user ssh-allowed # debian
+
+> userdel user ssh-allowed # centos
+
+> sudo usermod -g users user
+> sudo usermod -d user ssh-allowed
+
+#### Authentication Settings
+
+> MaxAuthTries 3
+> LoginGraceTime 15s # time to wait for type password 
+
+> X11Forwarding no # server side
+
+> /etc/ssh/ssh_config
+
+> ForwardX11 no # client side
+> ForwardX11Trusted no # client side
+> PasswordAuthentication no # client side
+
+> ssh -X/-Y # x11 forwarding
+
+> man sshd_config
+
+### Terminating SSH Connections
+
+> pgrep -c sshd
+
+> ps -ef | grep ssh
+
+> ss -punt
+> watch ss -punt
+
+> kill
+> pkill --signal KILL sshd
+> apt install psmisc
+> killall "sshd"
+
+
+### auto logout after certain time of inactivity
+
+> vim /home/user/.bash_profile
+```bash
+TMOUT=180
+readonly TMOUT
+export TMOUT
+```
+
+> vim /etc/profile.d/custom.sh
+> vim /etc/profile
+
+```bash
+#!/bin/bash
+TMOUT=180
+readonly TMOUT
+export TMOUT
+```
+#### SSH Key management
+
+> https://www.ssh.com/academy/iam/ssh-key-management
 
 
 
