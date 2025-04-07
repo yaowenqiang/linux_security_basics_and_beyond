@@ -862,8 +862,37 @@ good third part-tools features Considerations
 > nomachine installer
 > rsync -avrP(progress) {Documents, Downloads} user@host:/home/user
 
+### Working with files
+
+#### chmod
+
+> change file mode bits
+
+> https://chmod-calculator.com/
+
+#### chown and chgrp
 
 
+> addgroup ops
+> usermod -aG ops user
+
+> chgrp groupname filename
+> chown username filename
 
 
+### Encryption in Linux
+
+> apt install gpg
+> cd /tmp
+> gpg --gen-key
+
+Encrypt a file
+
+> gpg -e file(or -c)
+
+Decrypt it from the user account
+
+> gpg -d file
+
+### Encoding and Hashing
 
