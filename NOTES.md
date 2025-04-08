@@ -896,3 +896,40 @@ Decrypt it from the user account
 
 ### Encoding and Hashing
 
+Encoding is the proces of converting binary into text.
+
+
+> echo -n 'M' | base64
+> echo -n 'M' | openssl base64
+> echo -n 'TQ==' | base64 --decode
+
+> openssl rand -base64 24
+> openssl genrsa 512
+> openssl genrsa 16384
+
+
+#### Cryptographic hashing
+
+cryptographic hashing is the process of mapping one string of data to another - using an algorithm to do so.
+
+> openssl passwd -6
+
+> openssl passwd -6
+
+> yum install whois
+
+> yum install mkpasswd
+
+> mkpasswd --method=sha-512 --rounds=4098
+> mkpasswd --method=yescrypt
+> echo 'sysadmin:123456' > chpasswd --crypt-method YESCRYPT
+> sha256sum filename
+> sha512sum filename
+
+
+
+
+
+
+
+
