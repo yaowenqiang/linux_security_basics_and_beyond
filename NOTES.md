@@ -927,6 +927,47 @@ cryptographic hashing is the process of mapping one string of data to another - 
 > sha512sum filename
 
 
+### Working with Processes
+
+
+> ps aux
+> ps auxc
+> ps ef
+> ps -ef
+
+
+#### top
+
+> o filter and enter COMMAND=firefox
+
+> nautilus is the process of linux files program
+
++ htop
++ btop
++ bottom
++ glances
++ atop
++ nmon
++ bashtop
++ gtop
++ vtop
+
+
+### kill
+
+
++ kill
++ pkill
++ killall
+
+> apt install psmisc
+
+
+
+> nethogs
+
+
+>  gnome-calculator
 
 
 
