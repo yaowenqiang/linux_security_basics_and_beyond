@@ -970,7 +970,19 @@ cryptographic hashing is the process of mapping one string of data to another - 
 >  gnome-calculator
 
 
+## Vigilant Logging and Tooling
+
+### journal
+
+> journalctl -u sshd
+> journalctl -xeu sshd
+> journalctl -xu sshd
 
 
+> /var/log/journal/
 
+### cron
 
+> @reboot root /usr/bin/apt update -q -y >> /var/log/apt/automaticupdates.log
+
+> vim /etc/cron.daily/dpkg
