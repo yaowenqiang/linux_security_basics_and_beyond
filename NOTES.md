@@ -986,3 +986,34 @@ cryptographic hashing is the process of mapping one string of data to another - 
 > @reboot root /usr/bin/apt update -q -y >> /var/log/apt/automaticupdates.log
 
 > vim /etc/cron.daily/dpkg
+
+### rsyslog
+
+> apt install rsyslog
+
+> /var/log/syslog
+> systemctl status rsyslog
+
+>  /etc/rsyslog.conf
+
+> provides UDP syslog reception
+> provides TCP syslog reception
+
+>  listen on port 514
+
+> ss -tulnp | grep 'rsyslog'
+>  ss -ant
+
+>  /etc/rsyslog.conf
+
+> rules
+
+>  *.* @@ip:514 
+
+> $template RemoteLogs, "/var/log/remoteservers$HOSTNAME/%HOSTNAME%-syslog"
+> *.* ?RemoteLogs
+& ~
+> $template RemoteLogs, "/var/log/remoteservers$HOSTNAME/%PROGRAMENAME.log"
+
+> logger 'test from devserver'
+
