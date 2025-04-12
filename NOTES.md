@@ -1017,3 +1017,63 @@ cryptographic hashing is the process of mapping one string of data to another - 
 
 > logger 'test from devserver'
 
+## Auditing in Linux
+
+> apt install auditd
+> apt install audispd-plugins
+
+> /etc/audit/auditd.conf
+
+> ausearch -p <processid>
+> ausearch -ua <userid> -i
+> ausearch --message USER_LOGIN --success no --interpret
+> aureport -x 
+> aureport >> out.txt
+> aureport --login --summary --i
+> aureport -u --failed --summary -i
+> aureport -t
+
+
+### Nmap
+
+> nmap -sn 10.0.2.0/24
+
+
+> nmap -sU  ip  -p 53  # udp scan
+> nmap  ip  -p 9090 cockpit
+> systemctl status cockpit.socket
+
+### Wireshark
+
+> apt install wireshark
+
+> sudo dpkg-reconfigure wireshark-common
+
+### Additional tools
+
+| Category | Tool examples |
+| -------------- | --------------- |
+| Client-side |  |
+| Malware Protection | ClamAV, RXHunter |
+| Secure Linux Distros | QubesOS, Whonix, Kodachi |
+| Server-side |  |
+| IDS/IPS | Snort, suricata,AIDE |
+| SSH Protection | Fail2Ban |
+| Application Layer firewalling | Squid |
+| Security Monitoring/Auditing | Tripwire, Lynix, and Kail(OS) |
+| Sandboxing | Firejail |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
